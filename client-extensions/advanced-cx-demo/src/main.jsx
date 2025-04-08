@@ -14,11 +14,15 @@ class PropsExample extends HTMLElement {
   }
 
   connectedCallback() {
-    // Mount the app with React.StrictMode wrapper
     this._root = ReactDOM.createRoot(this._shadow)
+
+    // use this.getAttribute() to get the values that will be
+    // passed to use as props on the custom element.
     this._root.render(
       <React.StrictMode>
-        <Props entryId={this.id} backgroundColor={this.backgroundColor} label={this.label} />
+        <Props entryId={this.getAttribute('id')} 
+          backgroundColor={this.getAttribute('background-color')} 
+          label={this.getAttribute('label')} />
       </React.StrictMode>
     )
   }
@@ -38,35 +42,23 @@ class PropsExample extends HTMLElement {
 class ChildExample extends HTMLElement {
   constructor() {
     super()
+    this._root = null
     this._shadow = this.attachShadow({ mode: 'open' })
-
-    // Prepare React mount point
-    this._mountRoot = document.createElement('div')
-    this._shadow.appendChild(this._mountRoot)
-
-    // Inject <slot> wrapper for light DOM children
-    const slotContainer = document.createElement('div')
-    slotContainer.innerHTML = `<slot></slot>`
-    this._shadow.appendChild(slotContainer)
-
-    this._reactRoot = null
   }
 
   connectedCallback() {
-    if (!this._reactRoot) {
-      this._reactRoot = ReactDOM.createRoot(this._mountRoot)
-      this._reactRoot.render(
-        <React.StrictMode>
-          <Children />
-        </React.StrictMode>
-      )
-    }
+    this._root = ReactDOM.createRoot(this._shadow)
+    this._root.render(
+      <React.StrictMode>
+        <Children />
+      </React.StrictMode>
+    )
   }
 
   disconnectedCallback() {
-    if (this._reactRoot) {
-      this._reactRoot.unmount()
-      this._reactRoot = null
+    if (this._root) {
+      this._root.unmount()
+      this._root = null
     }
   }
 }
