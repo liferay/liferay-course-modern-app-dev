@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import './Props.css'
 
+/**
+ * This is a simple component to render the text we're given as properties.
+ * It does have defaults for the properties, so it's not required to pass them.
+ */
 function Props({ entryId = '-1', backgroundColor = 'white', label = 'Hello, World!' }) {
-
-    useEffect(() => {
-        console.log(Number(entryId));
-    }, [entryId]);
-
-    console.log('Props component rendered with:', entryId, label, backgroundColor);
     return (
     <>
     <div id={entryId} className="card" style={{ backgroundColor }}>
