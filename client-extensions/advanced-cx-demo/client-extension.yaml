@@ -25,3 +25,8 @@ child-example:
     urls:
         - assets/*.js
     useESM: true
+advanced-cx:
+  bareSpecifier: advanced-cx
+  name: Advanced CX Examples
+  type: jsImportMapsEntry
+  url: assets/index.js
