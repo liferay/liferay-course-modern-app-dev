@@ -1,0 +1,50 @@
+{
+	"configuration": {
+		"className": "com.liferay.headless.admin.list.type.dto.v1_0.ListTypeDefinition",
+		"parameters": {
+			"containsHeaders": "true",
+			"createStrategy": "UPSERT",
+			"onErrorFail": "false",
+			"updateStrategy": "UPDATE"
+		},
+		"taskItemDelegateName": "DEFAULT"
+	},
+	"items": [
+		{
+			"externalReferenceCode": "KYC_VERIFICATION_STATES",
+			"listTypeEntries": [
+				{
+					"name_i18n": {
+						"en-US": "Approved"
+					},
+					"name": "Approved",
+					"type": "",
+					"key": "approved",
+					"externalReferenceCode": "VERIFICATION_STATE_APPROVED"
+				},
+				{
+					"name_i18n": {
+						"en-US": "Denied"
+					},
+					"name": "Denied",
+					"type": "",
+					"key": "denied",
+					"externalReferenceCode": "VERIFICATION_STATE_DENIED"
+				},
+				{
+					"name_i18n": {
+						"en-US": "Under Review"
+					},
+					"name": "Under Review",
+					"type": "",
+					"key": "underReview",
+					"externalReferenceCode": "VERIFICATION_STATE_UNDER_REVIEW"
+				}
+			],
+			"name": "Verification States",
+			"name_i18n": {
+				"en-US": "Verification States"
+			}
+		}
+	]
+}
